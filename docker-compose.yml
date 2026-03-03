@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: noibai-hotel-web:latest
+    container_name: noibai-hotel-web
+    ports:
+      - "3000:3000"
+    restart: always
+    environment:
+      - NODE_ENV=production
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge

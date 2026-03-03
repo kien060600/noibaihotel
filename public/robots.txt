@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Chặn bot quét các thư mục nội bộ
+Disallow: /api/
+Disallow: /_next/
+
+Sitemap: https://noibaihotel.com/sitemap.xml

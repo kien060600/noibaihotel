@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useTranslation } from '../hooks/useTranslation';
 
 const blogImages = [
@@ -33,7 +34,15 @@ export default function BlogPage() {
           <div className="blog-grid">
             {t.blog.posts.map((post, index) => (
               <article key={index} className="post-card">
-                <div className="post-image" style={{ backgroundImage: `url(${blogImages[index]})` }}>
+                <div className="post-image">
+                  <Image
+                    src={blogImages[index]}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                  />
                   <div className="post-category">{post.category}</div>
                 </div>
                 <div className="post-content">
@@ -60,8 +69,8 @@ export default function BlogPage() {
         @media (min-width: 1024px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
         .post-card { background: var(--color-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform var(--transition-normal); }
         .post-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
-        .post-image { aspect-ratio: 16 / 9; background-size: cover; background-position: center; position: relative; }
-        .post-category { position: absolute; top: var(--space-4); left: var(--space-4); background: var(--color-accent); color: var(--color-white); padding: var(--space-1) var(--space-3); font-size: var(--text-xs); font-weight: var(--font-medium); text-transform: uppercase; border-radius: var(--radius-sm); }
+        .post-image { position: relative; overflow: hidden; aspect-ratio: 16 / 9; }
+        .post-category { position: absolute; top: var(--space-4); left: var(--space-4); z-index: 1; background: var(--color-accent); color: var(--color-white); padding: var(--space-1) var(--space-3); font-size: var(--text-xs); font-weight: var(--font-medium); text-transform: uppercase; border-radius: var(--radius-sm); }
         .post-content { padding: var(--space-6); }
         .post-date { font-size: var(--text-xs); color: var(--color-gray-500); margin-bottom: var(--space-2); text-transform: uppercase; }
         .post-title { font-size: var(--text-xl); margin-bottom: var(--space-3); line-height: var(--leading-tight); }

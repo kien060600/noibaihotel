@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { rooms, formatPrice } from '@/data/rooms';
 import { useTranslation } from '../../hooks/useTranslation';
@@ -51,8 +52,17 @@ export default function RoomDetail() {
       </Head>
 
       <article className="room-detail">
-        <header className="room-banner" style={{ backgroundImage: `linear-gradient(rgba(17, 24, 39, 0.4), rgba(17, 24, 39, 0.7)), url(${room.image})` }}>
-          <div className="container">
+        <header className="room-banner">
+          <Image
+            src={room.image}
+            alt={roomName}
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+          />
+          <div className="room-banner-overlay" />
+          <div className="container banner-content">
             <h1 className="fade-in-up">{roomName}</h1>
             <div className="room-price fade-in-up" style={{ animationDelay: '0.1s' }}>
               {t.rooms.from} <strong>{formatPrice(room.price)}</strong> {t.rooms.perNight}
@@ -65,7 +75,16 @@ export default function RoomDetail() {
             <div className="main-info">
               <div className="gallery">
                 {room.images.map((img, idx) => (
-                  <img key={idx} src={img} alt={`${roomName} view ${idx + 1}`} loading="lazy" />
+                  <div key={idx} className="gallery-item">
+                    <Image
+                      src={img}
+                      alt={`${roomName} ${idx + 1}`}
+                      fill
+                      sizes="(max-width: 767px) 100vw, (max-width: 992px) 50vw, 600px"
+                      style={{ objectFit: 'cover' }}
+                      loading={idx === 0 ? 'eager' : 'lazy'}
+                    />
+                  </div>
                 ))}
               </div>
 
@@ -131,10 +150,13 @@ export default function RoomDetail() {
       </article>
 
       <style jsx>{`
-        .room-banner { height: 60vh; min-height: 400px; background-size: cover; background-position: center; display: flex; align-items: flex-end; padding-bottom: var(--space-12); color: var(--color-white); }
+        .room-banner { position: relative; overflow: hidden; height: 60vh; min-height: 400px; display: flex; align-items: flex-end; color: var(--color-white); }
+        .room-banner-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(17,24,39,0.35), rgba(17,24,39,0.7)); z-index: 1; }
+        .banner-content { position: relative; z-index: 2; padding-bottom: var(--space-12); }
         .room-banner h1 { font-size: var(--text-5xl); color: var(--color-white); margin-bottom: var(--space-4); }
         @media (max-width: 767px) {
-          .room-banner { height: 45vh; min-height: 260px; padding-bottom: var(--space-8); }
+          .room-banner { height: 45vh; min-height: 260px; }
+          .banner-content { padding-bottom: var(--space-8); }
           .room-banner h1 { font-size: var(--text-3xl); }
         }
         .room-price { font-family: var(--font-sans); font-size: var(--text-lg); font-weight: var(--font-medium); }
@@ -142,7 +164,7 @@ export default function RoomDetail() {
         .content-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-12); margin-top: var(--space-8); }
         @media (min-width: 992px) { .content-layout { grid-template-columns: 2fr 1fr; margin-top: var(--space-12); } }
         .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-12); }
-        .gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-md); }
+        .gallery-item { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-md); }
         @media (max-width: 767px) {
           .gallery { grid-template-columns: 1fr; }
         }

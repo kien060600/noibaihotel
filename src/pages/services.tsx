@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useTranslation } from '../hooks/useTranslation';
 
 export default function ServicesPage() {
@@ -26,7 +27,15 @@ export default function ServicesPage() {
           <div className="services-grid">
 
             <div className="service-card">
-              <div className="service-img" style={{ backgroundImage: "url('/images/service/588533094.jpg')" }}></div>
+              <div className="service-img">
+                <Image
+                  src="/images/service/588533094.jpg"
+                  alt={t.services.restaurant}
+                  fill
+                  sizes="(max-width: 992px) 100vw, 50vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className="service-content">
                 <h2>{t.services.restaurant}</h2>
                 <p>{t.services.restaurantDesc}</p>
@@ -37,7 +46,15 @@ export default function ServicesPage() {
             </div>
 
             <div className="service-card reverse">
-              <div className="service-img" style={{ backgroundImage: "url('/images/service/498249257.jpg')" }}></div>
+              <div className="service-img">
+                <Image
+                  src="/images/service/498249257.jpg"
+                  alt={t.services.spa}
+                  fill
+                  sizes="(max-width: 992px) 100vw, 50vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className="service-content">
                 <h2>{t.services.spa}</h2>
                 <p>{t.services.spaDesc}</p>
@@ -48,7 +65,15 @@ export default function ServicesPage() {
             </div>
 
             <div className="service-card">
-              <div className="service-img" style={{ backgroundImage: "url('/images/Background/274606571.jpg')" }}></div>
+              <div className="service-img">
+                <Image
+                  src="/images/Background/274606571.jpg"
+                  alt={t.services.gym}
+                  fill
+                  sizes="(max-width: 992px) 100vw, 50vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
               <div className="service-content">
                 <h2>{t.services.gym}</h2>
                 <p>{t.services.gymDesc}</p>
@@ -66,17 +91,17 @@ export default function ServicesPage() {
         .page-header { padding-top: calc(var(--nav-height) + var(--space-12)); padding-bottom: var(--space-12); background-color: var(--color-primary); color: var(--color-white); text-align: center; }
         .page-title { font-size: clamp(1.5rem, 5vw, var(--text-4xl)); margin-bottom: var(--space-4); color: var(--color-white); }
         .page-subtitle { font-size: var(--text-base); color: var(--color-gray-300); max-width: 800px; margin: 0 auto; }
+        .services-grid { display: flex; flex-direction: column; gap: var(--space-16); }
+        .service-card { display: grid; grid-template-columns: 1fr; gap: 0; align-items: center; background: var(--color-gray-50); border-radius: var(--radius-lg); overflow: hidden; }
+        @media (min-width: 992px) { .service-card { grid-template-columns: 1fr 1fr; background: transparent; gap: var(--space-8); } .service-card.reverse { direction: rtl; } .service-card.reverse .service-content { direction: ltr; } }
+        .service-img { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
+        @media (min-width: 992px) { .service-img { aspect-ratio: unset; height: 380px; border-radius: var(--radius-lg); } }
+        .service-content { padding: var(--space-6); }
+        @media (min-width: 992px) { .service-content { padding: var(--space-8); } }
         @media (max-width: 767px) {
           .service-content { padding: var(--space-5) var(--space-4); }
           .services-grid { gap: var(--space-10); }
         }
-        .services-grid { display: flex; flex-direction: column; gap: var(--space-16); }
-        .service-card { display: grid; grid-template-columns: 1fr; gap: var(--space-8); align-items: center; background: var(--color-gray-50); border-radius: var(--radius-lg); overflow: hidden; }
-        @media (min-width: 992px) { .service-card { grid-template-columns: 1fr 1fr; background: transparent; } .service-card.reverse { direction: rtl; } .service-card.reverse .service-content { direction: ltr; } }
-        .service-img { aspect-ratio: 4 / 3; background-size: cover; background-position: center; border-radius: var(--radius-lg); }
-        @media (min-width: 992px) { .service-img { aspect-ratio: unset; height: 380px; } }
-        .service-content { padding: var(--space-6); }
-        @media (min-width: 992px) { .service-content { padding: var(--space-8); } }
         .service-content h2 { color: var(--color-primary); margin-bottom: var(--space-4); }
         .service-content p { color: var(--color-gray-600); margin-bottom: var(--space-6); line-height: var(--leading-relaxed); }
         .service-content ul { list-style: none; }

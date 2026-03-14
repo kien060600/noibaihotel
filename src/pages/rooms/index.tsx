@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { rooms, formatPrice } from '@/data/rooms';
 import { useTranslation } from '../../hooks/useTranslation';
 
@@ -35,7 +36,14 @@ export default function RoomsPage() {
               return (
                 <article key={room.id} className="room-card">
                   <Link href={`/rooms/${room.slug}`} className="room-image">
-                    <img src={room.image} alt={roomName} loading="lazy" />
+                    <Image
+                      src={room.image}
+                      alt={roomName}
+                      fill
+                      sizes="(max-width: 767px) 100vw, (max-width: 1100px) 50vw, 400px"
+                      className="room-img"
+                      style={{ objectFit: 'cover', transition: 'transform 0.5s cubic-bezier(0.4,0,0.2,1)' }}
+                    />
                     <div className="room-image-overlay">
                       <span className="overlay-text">{t.rooms.viewDetail}</span>
                     </div>
@@ -75,8 +83,7 @@ export default function RoomsPage() {
         .room-card { background-color: var(--color-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: all var(--transition-normal); display: flex; flex-direction: column; }
         .room-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
         .room-image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; display: block; cursor: pointer; }
-        .room-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
-        .room-card:hover .room-image img { transform: scale(1.05); }
+        .room-card:hover .room-img { transform: scale(1.05); }
         .room-image-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; transition: background var(--transition-normal); }
         .room-image:hover .room-image-overlay { background: rgba(0,0,0,0.35); }
         .overlay-text { color: #fff; font-family: var(--font-sans); font-size: var(--text-sm); font-weight: var(--font-semibold); letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.8); padding: var(--space-2) var(--space-6); border-radius: var(--radius-sm); opacity: 0; transform: translateY(6px); transition: opacity var(--transition-normal), transform var(--transition-normal); }

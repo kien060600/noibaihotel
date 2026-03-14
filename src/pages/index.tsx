@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { rooms, formatPrice } from '../data/rooms';
 import { useTranslation } from '../hooks/useTranslation';
 
@@ -22,6 +23,14 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="hero">
+        <Image
+          src="/images/Background/hotel-front.jpg"
+          alt="Noi Bai Airport Hotel"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center 33%' }}
+        />
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="hero-card">
@@ -76,7 +85,15 @@ export default function HomePage() {
           </div>
 
           <div className="featured-room">
-            <div className="featured-img" style={{ backgroundImage: `url(${featuredRoom.images[0]})` }}></div>
+            <div className="featured-img">
+              <Image
+                src={featuredRoom.images[0]}
+                alt={featuredName}
+                fill
+                sizes="(max-width: 767px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
             <div className="featured-info">
               <h3 className="featured-name">{featuredName}</h3>
               <p className="featured-desc">{featuredDesc}</p>
@@ -105,26 +122,19 @@ export default function HomePage() {
           display: flex;
           align-items: flex-end;
           justify-content: center;
-          background-image: url('/images/Background/hotel-front.jpg');
-          background-size: cover;
-          background-position: center 33%;
-        }
-
-        @media (max-width: 767px) {
-          .hero {
-            background-position: center 20%;
-          }
+          overflow: hidden;
         }
 
         .hero-overlay {
           position: absolute;
           inset: 0;
           background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.55) 100%);
+          z-index: 1;
         }
 
         .hero-content {
           position: relative;
-          z-index: 1;
+          z-index: 2;
           display: flex;
           justify-content: center;
           width: 100%;
@@ -144,9 +154,7 @@ export default function HomePage() {
         }
 
         @media (max-width: 767px) {
-          .hero-card {
-            padding: var(--space-8) var(--space-6);
-          }
+          .hero-card { padding: var(--space-8) var(--space-6); }
         }
 
         .hero-label {
@@ -194,9 +202,7 @@ export default function HomePage() {
           .section-subtitle { font-size: var(--text-base); }
         }
 
-        .bg-gray {
-          background-color: var(--color-gray-50);
-        }
+        .bg-gray { background-color: var(--color-gray-50); }
 
         .features-grid {
           display: grid;
@@ -205,9 +211,7 @@ export default function HomePage() {
         }
 
         @media (min-width: 768px) {
-          .features-grid {
-            grid-template-columns: repeat(3, 1fr);
-          }
+          .features-grid { grid-template-columns: repeat(3, 1fr); }
         }
 
         .feature-card {
@@ -219,10 +223,7 @@ export default function HomePage() {
           .feature-card { padding: var(--space-4) var(--space-6); }
         }
 
-        .feature-icon {
-          font-size: 2.5rem;
-          margin-bottom: var(--space-4);
-        }
+        .feature-icon { font-size: 2.5rem; margin-bottom: var(--space-4); }
 
         .feature-card h3 {
           font-size: var(--text-xl);
@@ -238,7 +239,7 @@ export default function HomePage() {
         .featured-room {
           display: grid;
           grid-template-columns: 1fr;
-          gap: var(--space-8);
+          gap: 0;
           background: var(--color-white);
           border-radius: var(--radius-lg);
           overflow: hidden;
@@ -246,22 +247,17 @@ export default function HomePage() {
         }
 
         @media (min-width: 768px) {
-          .featured-room {
-            grid-template-columns: 1fr 1fr;
-          }
+          .featured-room { grid-template-columns: 1fr 1fr; }
         }
 
         .featured-img {
-          height: 300px;
-          background-size: cover;
-          background-position: center;
+          position: relative;
+          overflow: hidden;
+          height: 280px;
         }
 
         @media (min-width: 768px) {
-          .featured-img {
-            height: 100%;
-            min-height: 400px;
-          }
+          .featured-img { height: 100%; min-height: 400px; }
         }
 
         .featured-info {

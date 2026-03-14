@@ -3,7 +3,7 @@ const nextConfig = {
     reactStrictMode: true,
     output: "standalone",
     i18n: {
-        locales: ["vi", "en"],
+        locales: ["vi", "en", "zh"],
         defaultLocale: "vi",
     },
 };

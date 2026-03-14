@@ -7,6 +7,11 @@ import { useTranslation } from '../hooks/useTranslation';
 export default function HomePage() {
   const { t } = useTranslation();
   const featuredRoom = rooms[0];
+  const featuredSlug = featuredRoom.slug as keyof typeof t.rooms.roomNames;
+  const featuredName = t.rooms.roomNames[featuredSlug] || featuredRoom.name;
+  const featuredDesc = t.rooms.roomDescriptions[featuredSlug] || featuredRoom.description;
+  const featuredBed = t.rooms.bedTypes[featuredSlug] || featuredRoom.bedType;
+  const featuredCapacity = t.rooms.capacities[featuredSlug] || featuredRoom.capacity;
 
   return (
     <>
@@ -73,12 +78,12 @@ export default function HomePage() {
           <div className="featured-room">
             <div className="featured-img" style={{ backgroundImage: `url(${featuredRoom.images[0]})` }}></div>
             <div className="featured-info">
-              <h3 className="featured-name">{featuredRoom.name}</h3>
-              <p className="featured-desc">{featuredRoom.description}</p>
+              <h3 className="featured-name">{featuredName}</h3>
+              <p className="featured-desc">{featuredDesc}</p>
               <div className="featured-meta">
                 <span>{featuredRoom.size} m²</span>
-                <span>{featuredRoom.bedType}</span>
-                <span>{featuredRoom.capacity}</span>
+                <span>{featuredBed}</span>
+                <span>{featuredCapacity}</span>
               </div>
               <div className="featured-footer">
                 <span className="featured-price">{t.rooms.from} {formatPrice(featuredRoom.price)}{t.rooms.perNight}</span>
@@ -142,7 +147,7 @@ export default function HomePage() {
 
         .hero-title {
           font-family: var(--font-serif);
-          font-size: clamp(2.2rem, 5vw, 3.5rem);
+          font-size: clamp(1.5rem, 4vw, 2.2rem);
           font-weight: var(--font-bold);
           color: #ffffff;
           margin-bottom: var(--space-4);

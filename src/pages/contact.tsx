@@ -68,7 +68,7 @@ export default function ContactPage() {
                   <span className="icon">📞</span>
                   <div>
                     <strong>{t.contact.phoneLabel}</strong>
-                    <p>+84 123 456 789</p>
+                    <p>0975 280 338</p>
                   </div>
                 </li>
                 <li>

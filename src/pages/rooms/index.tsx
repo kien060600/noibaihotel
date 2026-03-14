@@ -34,13 +34,16 @@ export default function RoomsPage() {
 
               return (
                 <article key={room.id} className="room-card">
-                  <div className="room-image">
+                  <Link href={`/rooms/${room.slug}`} className="room-image">
                     <img src={room.image} alt={roomName} loading="lazy" />
+                    <div className="room-image-overlay">
+                      <span className="overlay-text">{t.rooms.viewDetail}</span>
+                    </div>
                     <div className="room-price-badge">
                       <span>{t.rooms.from}</span>
                       <strong>{formatPrice(room.price)}</strong> {t.rooms.perNight}
                     </div>
-                  </div>
+                  </Link>
 
                   <div className="room-info">
                     <h2>{roomName}</h2>
@@ -71,9 +74,13 @@ export default function RoomsPage() {
         @media (min-width: 992px) { .rooms-grid { grid-template-columns: repeat(3, 1fr); } }
         .room-card { background-color: var(--color-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: all var(--transition-normal); display: flex; flex-direction: column; }
         .room-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-        .room-image { position: relative; height: 250px; overflow: hidden; }
+        .room-image { position: relative; height: 250px; overflow: hidden; display: block; cursor: pointer; }
         .room-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
         .room-card:hover .room-image img { transform: scale(1.05); }
+        .room-image-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; transition: background var(--transition-normal); }
+        .room-image:hover .room-image-overlay { background: rgba(0,0,0,0.35); }
+        .overlay-text { color: #fff; font-family: var(--font-sans); font-size: var(--text-sm); font-weight: var(--font-semibold); letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.8); padding: var(--space-2) var(--space-6); border-radius: var(--radius-sm); opacity: 0; transform: translateY(6px); transition: opacity var(--transition-normal), transform var(--transition-normal); }
+        .room-image:hover .overlay-text { opacity: 1; transform: translateY(0); }
         .room-price-badge { position: absolute; bottom: 0; left: 0; background: rgba(30, 41, 59, 0.9); color: white; padding: var(--space-2) var(--space-4); backdrop-filter: blur(4px); border-top-right-radius: var(--radius-md); }
         .room-price-badge span { display: block; font-size: var(--text-xs); color: var(--color-gray-300); text-transform: uppercase; }
         .room-price-badge strong { font-size: var(--text-lg); color: var(--color-accent); }

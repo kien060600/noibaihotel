@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Header from './Header';
 import Footer from './Footer';
+import MessengerButton from './MessengerButton';
 
 interface LayoutProps {
     children: React.ReactNode;
@@ -27,6 +28,7 @@ export default function Layout({
                 {children}
             </main>
             <Footer />
+            <MessengerButton />
         </>
     );
 }

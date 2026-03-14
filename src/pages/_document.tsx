@@ -1,8 +1,8 @@
-import { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript, DocumentContext } from "next/document";
 
-export default function Document() {
+export default function MyDocument({ locale }: { locale: string }) {
   return (
-    <Html lang="en">
+    <Html lang={locale || "vi"}>
       <Head />
       <body className="antialiased">
         <Main />
@@ -11,3 +11,8 @@ export default function Document() {
     </Html>
   );
 }
+
+MyDocument.getInitialProps = async (ctx: DocumentContext) => {
+  const initialProps = await Document.getInitialProps(ctx);
+  return { ...initialProps, locale: ctx.locale };
+};

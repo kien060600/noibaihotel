@@ -58,6 +58,13 @@ export default function Header() {
             >
               EN
             </button>
+            <span className="lang-divider">|</span>
+            <button
+              className={`lang-btn ${locale === 'zh' ? 'active' : ''}`}
+              onClick={() => switchLocale('zh')}
+            >
+              中文
+            </button>
           </div>
           <Link href="/rooms" className="btn btn-primary">
             {t.nav.bookNow}

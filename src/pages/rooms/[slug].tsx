@@ -8,16 +8,16 @@ import { useTranslation } from '../../hooks/useTranslation';
 export default function RoomDetail() {
   const router = useRouter();
   const { slug } = router.query;
-  const { t, locale } = useTranslation();
+  const { t } = useTranslation();
 
   const room = rooms.find((r) => r.slug === slug);
 
   if (!room) {
     return (
       <div className="section container text-center" style={{ paddingTop: '150px', paddingBottom: '100px' }}>
-        <h1>{locale === 'en' ? 'Room not found' : 'Không tìm thấy phòng'}</h1>
+        <h1>{t.rooms.notFound}</h1>
         <Link href="/rooms" className="btn btn-primary" style={{ marginTop: '24px' }}>
-          {locale === 'en' ? 'Back to rooms' : 'Quay lại danh sách phòng'}
+          {t.rooms.backToRooms}
         </Link>
       </div>
     );
@@ -70,7 +70,7 @@ export default function RoomDetail() {
               </div>
 
               <section className="description-section">
-                <h2>{locale === 'en' ? 'Overview' : 'Tổng Quan'}</h2>
+                <h2>{t.rooms.overview}</h2>
                 <p>{roomDesc}</p>
               </section>
 
@@ -94,30 +94,30 @@ export default function RoomDetail() {
 
                 <form className="booking-form" onSubmit={(e) => e.preventDefault()}>
                   <div className="form-group">
-                    <label>{locale === 'en' ? 'Check-in' : 'Ngày Nhận Phòng'}</label>
+                    <label>{t.rooms.checkIn}</label>
                     <input type="date" className="form-control" required />
                   </div>
                   <div className="form-group">
-                    <label>{locale === 'en' ? 'Check-out' : 'Ngày Trả Phòng'}</label>
+                    <label>{t.rooms.checkOut}</label>
                     <input type="date" className="form-control" required />
                   </div>
                   <div className="form-group">
-                    <label>{locale === 'en' ? 'Guests' : 'Khách'}</label>
+                    <label>{t.rooms.guests}</label>
                     <select className="form-control">
-                      <option>{locale === 'en' ? '1 Adult' : '1 Người lớn'}</option>
-                      <option>{locale === 'en' ? '2 Adults' : '2 Người lớn'}</option>
-                      <option>{locale === 'en' ? 'Add Children' : 'Thêm Trẻ em'}</option>
+                      <option>{t.rooms.guest1Adult}</option>
+                      <option>{t.rooms.guest2Adults}</option>
+                      <option>{t.rooms.guestAddChildren}</option>
                     </select>
                   </div>
                   <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '16px' }}>
                     {t.rooms.detailBooking}
                   </button>
-                  <p className="form-note">{locale === 'en' ? 'You will not be charged yet.' : 'Bạn sẽ không bị trừ tiền ngay bây giờ.'}</p>
+                  <p className="form-note">{t.rooms.noChargeYet}</p>
                 </form>
               </div>
 
               <div className="quick-facts">
-                <h4>{locale === 'en' ? 'Quick Info' : 'Thông Tin Nhanh'}</h4>
+                <h4>{t.rooms.quickInfo}</h4>
                 <ul>
                   <li><strong>{t.rooms.detailSize}:</strong> {room.size} m²</li>
                   <li><strong>{t.rooms.detailBed}:</strong> {bedType}</li>

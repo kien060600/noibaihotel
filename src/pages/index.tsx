@@ -101,13 +101,19 @@ export default function HomePage() {
       <style jsx>{`
         .hero {
           position: relative;
-          min-height: 100vh;
+          min-height: 100dvh;
           display: flex;
           align-items: flex-end;
           justify-content: center;
           background-image: url('/images/Background/hotel-front.jpg');
           background-size: cover;
           background-position: center 33%;
+        }
+
+        @media (max-width: 767px) {
+          .hero {
+            background-position: center 20%;
+          }
         }
 
         .hero-overlay {
@@ -135,6 +141,12 @@ export default function HomePage() {
           text-align: center;
           max-width: 700px;
           width: 100%;
+        }
+
+        @media (max-width: 767px) {
+          .hero-card {
+            padding: var(--space-8) var(--space-6);
+          }
         }
 
         .hero-label {
@@ -177,6 +189,11 @@ export default function HomePage() {
           color: var(--color-gray-500);
         }
 
+        @media (max-width: 767px) {
+          .section-title { font-size: var(--text-2xl); }
+          .section-subtitle { font-size: var(--text-base); }
+        }
+
         .bg-gray {
           background-color: var(--color-gray-50);
         }
@@ -196,6 +213,10 @@ export default function HomePage() {
         .feature-card {
           text-align: center;
           padding: var(--space-8);
+        }
+
+        @media (max-width: 767px) {
+          .feature-card { padding: var(--space-4) var(--space-6); }
         }
 
         .feature-icon {
@@ -250,6 +271,10 @@ export default function HomePage() {
           justify-content: center;
         }
 
+        @media (max-width: 767px) {
+          .featured-info { padding: var(--space-6); }
+        }
+
         .featured-name {
           font-family: var(--font-serif);
           font-size: var(--text-2xl);
@@ -265,7 +290,8 @@ export default function HomePage() {
 
         .featured-meta {
           display: flex;
-          gap: var(--space-6);
+          flex-wrap: wrap;
+          gap: var(--space-3);
           color: var(--color-gray-500);
           font-size: var(--text-sm);
           margin-bottom: var(--space-6);
@@ -277,6 +303,8 @@ export default function HomePage() {
           display: flex;
           align-items: center;
           justify-content: space-between;
+          flex-wrap: wrap;
+          gap: var(--space-4);
         }
 
         .featured-price {

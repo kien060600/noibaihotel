@@ -51,16 +51,16 @@ export default function BlogPage() {
       </section>
 
       <style jsx>{`
-        .page-header { padding-top: calc(var(--nav-height) + var(--space-12)); padding-bottom: var(--space-16); background-color: var(--color-primary); color: var(--color-white); text-align: center; }
-        .page-title { font-size: var(--text-4xl); margin-bottom: var(--space-4); color: var(--color-white); }
-        .page-subtitle { font-size: var(--text-lg); color: var(--color-gray-300); max-width: 600px; margin: 0 auto; }
+        .page-header { padding-top: calc(var(--nav-height) + var(--space-12)); padding-bottom: var(--space-12); background-color: var(--color-primary); color: var(--color-white); text-align: center; }
+        .page-title { font-size: clamp(1.5rem, 5vw, var(--text-4xl)); margin-bottom: var(--space-4); color: var(--color-white); }
+        .page-subtitle { font-size: var(--text-base); color: var(--color-gray-300); max-width: 600px; margin: 0 auto; }
         .bg-light { background-color: var(--color-gray-50); }
         .blog-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-8); }
         @media (min-width: 768px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (min-width: 1024px) { .blog-grid { grid-template-columns: repeat(3, 1fr); } }
         .post-card { background: var(--color-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: transform var(--transition-normal); }
         .post-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-md); }
-        .post-image { height: 240px; background-size: cover; background-position: center; position: relative; }
+        .post-image { aspect-ratio: 16 / 9; background-size: cover; background-position: center; position: relative; }
         .post-category { position: absolute; top: var(--space-4); left: var(--space-4); background: var(--color-accent); color: var(--color-white); padding: var(--space-1) var(--space-3); font-size: var(--text-xs); font-weight: var(--font-medium); text-transform: uppercase; border-radius: var(--radius-sm); }
         .post-content { padding: var(--space-6); }
         .post-date { font-size: var(--text-xs); color: var(--color-gray-500); margin-bottom: var(--space-2); text-transform: uppercase; }

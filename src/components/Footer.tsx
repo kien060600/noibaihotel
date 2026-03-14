@@ -109,6 +109,14 @@ export default function Footer() {
           border-top: 1px solid #333;
         }
 
+        @media (max-width: 767px) {
+          .footer { padding: 48px 0 32px; }
+          .footer-top { margin-bottom: 36px; gap: 28px; }
+          .footer-info { font-size: 14px; }
+          .footer-nav { gap: 12px; }
+          .footer-nav a { font-size: 12px; }
+        }
+
         .container {
           max-width: 1200px;
           margin: 0 auto;

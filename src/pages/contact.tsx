@@ -111,9 +111,13 @@ export default function ContactPage() {
           color: var(--color-white);
           text-align: center;
         }
-        .page-title { font-size: var(--text-4xl); margin-bottom: var(--space-4); color: var(--color-white); }
-        .page-subtitle { font-size: var(--text-lg); color: var(--color-gray-300); max-width: 600px; margin: 0 auto; }
-        .contact-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-16); }
+        .page-title { font-size: clamp(1.5rem, 5vw, var(--text-4xl)); margin-bottom: var(--space-4); color: var(--color-white); }
+        .page-subtitle { font-size: var(--text-base); color: var(--color-gray-300); max-width: 600px; margin: 0 auto; }
+        .contact-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-10); }
+        @media (max-width: 767px) {
+          .contact-form-wrapper { padding: var(--space-6); }
+          .contact-info h2, .contact-form-wrapper h2 { font-size: var(--text-2xl); }
+        }
         @media (min-width: 992px) { .contact-layout { grid-template-columns: 1fr 1fr; } }
         .contact-info h2, .contact-form-wrapper h2 { color: var(--color-primary); margin-bottom: var(--space-4); font-size: var(--text-3xl); }
         .info-list { list-style: none; margin-top: var(--space-8); display: flex; flex-direction: column; gap: var(--space-6); }

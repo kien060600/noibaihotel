@@ -67,14 +67,14 @@ export default function RoomsPage() {
       </section>
 
       <style jsx>{`
-        .page-header { padding-top: calc(var(--nav-height) + var(--space-12)); padding-bottom: var(--space-16); background-color: var(--color-primary); color: var(--color-white); text-align: center; }
-        .page-title { font-size: var(--text-4xl); margin-bottom: var(--space-4); color: var(--color-white); }
-        .page-subtitle { font-size: var(--text-lg); color: var(--color-gray-300); max-width: 600px; margin: 0 auto; }
+        .page-header { padding-top: calc(var(--nav-height) + var(--space-12)); padding-bottom: var(--space-12); background-color: var(--color-primary); color: var(--color-white); text-align: center; }
+        .page-title { font-size: clamp(1.5rem, 5vw, var(--text-4xl)); margin-bottom: var(--space-4); color: var(--color-white); }
+        .page-subtitle { font-size: var(--text-base); color: var(--color-gray-300); max-width: 600px; margin: 0 auto; }
         .rooms-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-8); }
         @media (min-width: 992px) { .rooms-grid { grid-template-columns: repeat(3, 1fr); } }
         .room-card { background-color: var(--color-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: all var(--transition-normal); display: flex; flex-direction: column; }
         .room-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-        .room-image { position: relative; height: 250px; overflow: hidden; display: block; cursor: pointer; }
+        .room-image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; display: block; cursor: pointer; }
         .room-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
         .room-card:hover .room-image img { transform: scale(1.05); }
         .room-image-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; transition: background var(--transition-normal); }

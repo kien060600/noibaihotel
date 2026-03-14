@@ -63,13 +63,18 @@ export default function ServicesPage() {
       </section>
 
       <style jsx>{`
-        .page-header { padding-top: calc(var(--nav-height) + var(--space-12)); padding-bottom: var(--space-16); background-color: var(--color-primary); color: var(--color-white); text-align: center; }
-        .page-title { font-size: var(--text-4xl); margin-bottom: var(--space-4); color: var(--color-white); }
-        .page-subtitle { font-size: var(--text-lg); color: var(--color-gray-300); max-width: 800px; margin: 0 auto; }
+        .page-header { padding-top: calc(var(--nav-height) + var(--space-12)); padding-bottom: var(--space-12); background-color: var(--color-primary); color: var(--color-white); text-align: center; }
+        .page-title { font-size: clamp(1.5rem, 5vw, var(--text-4xl)); margin-bottom: var(--space-4); color: var(--color-white); }
+        .page-subtitle { font-size: var(--text-base); color: var(--color-gray-300); max-width: 800px; margin: 0 auto; }
+        @media (max-width: 767px) {
+          .service-content { padding: var(--space-5) var(--space-4); }
+          .services-grid { gap: var(--space-10); }
+        }
         .services-grid { display: flex; flex-direction: column; gap: var(--space-16); }
         .service-card { display: grid; grid-template-columns: 1fr; gap: var(--space-8); align-items: center; background: var(--color-gray-50); border-radius: var(--radius-lg); overflow: hidden; }
         @media (min-width: 992px) { .service-card { grid-template-columns: 1fr 1fr; background: transparent; } .service-card.reverse { direction: rtl; } .service-card.reverse .service-content { direction: ltr; } }
-        .service-img { height: 350px; background-size: cover; background-position: center; border-radius: var(--radius-lg); }
+        .service-img { aspect-ratio: 4 / 3; background-size: cover; background-position: center; border-radius: var(--radius-lg); }
+        @media (min-width: 992px) { .service-img { aspect-ratio: unset; height: 380px; } }
         .service-content { padding: var(--space-6); }
         @media (min-width: 992px) { .service-content { padding: var(--space-8); } }
         .service-content h2 { color: var(--color-primary); margin-bottom: var(--space-4); }

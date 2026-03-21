@@ -23,13 +23,40 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="hero">
+        {/* Desktop backgrounds */}
         <Image
           src="/images/Background/hotel-front.jpg"
           alt="Noi Bai Airport Hotel"
           fill
           priority
           sizes="100vw"
-          className="hero-bg-img"
+          className="hero-bg-img desktop-bg"
+        />
+        <Image
+          src="/images/Background/hotel-front-2.jpg"
+          alt="Noi Bai Airport Hotel"
+          fill
+          priority
+          sizes="100vw"
+          className="hero-bg-img desktop-bg fade-anim"
+        />
+
+        {/* Mobile backgrounds */}
+        <Image
+          src="/images/Background/hotel-front-mobile.jpg"
+          alt="Noi Bai Airport Hotel"
+          fill
+          priority
+          sizes="100vw"
+          className="hero-bg-img mobile-bg"
+        />
+        <Image
+          src="/images/Background/hotel-front-mobile-2.jpg"
+          alt="Noi Bai Airport Hotel"
+          fill
+          priority
+          sizes="100vw"
+          className="hero-bg-img mobile-bg fade-anim"
         />
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -130,12 +157,31 @@ export default function HomePage() {
           object-position: center 33%;
         }
 
+        :global(.mobile-bg) {
+          display: none !important;
+        }
+
+        :global(.fade-anim) {
+          animation: fadeTop 6s ease-in-out infinite alternate !important;
+        }
+
+        @keyframes fadeTop {
+          0%, 30% { opacity: 0; }
+          70%, 100% { opacity: 1; }
+        }
+
         @media (max-width: 767px) {
           .hero {
             min-height: 90dvh; /* Reduced height on mobile to crop less of the sides */
           }
           :global(.hero-bg-img) {
             object-position: center center; /* Cắt ưu tiên trung tâm ảnh cho tỉ lệ dọc của điện thoại */
+          }
+          :global(.desktop-bg) {
+            display: none !important;
+          }
+          :global(.mobile-bg) {
+            display: block !important;
           }
         }
 

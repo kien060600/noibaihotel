@@ -20,17 +20,28 @@ jobs:
           key: ${{ secrets.VPS_SSH_KEY }}     # Khối khóa bí mật (Private Key)
           port: 22
           script: |
-            # Di chuyển vào folder code (chú ý thay đổi tên cho đúng với folder trên VPS)
+            # Nạp biến môi trường để nhận diện lệnh npm và pm2
+            export PATH=$PATH:/usr/local/bin:/usr/bin
+            
+            # Khai báo biến
+            cd /root
+            
+            # Nếu chưa có thư mục code trên VPS thì tự động Clone về luôn (dùng token ẩn của Github)
+            if [ ! -d "noibaihotel" ]; then
+              git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git noibaihotel
+            fi
+            
+            # Đi vào thư mục
             cd /root/noibaihotel
             
             # Lấy code mới nhất từ git
             git pull origin main
             
-            # Cài đặt thư viện mới (nếu có)
+            # Cài đặt thư viện mới
             npm install
             
-            # Build lại project Next.js
+            # Build Next.js
             npm run build
             
-            # Khởi động lại PM2 để cập nhật code mới không bị downtime
-            pm2 restart noibaihotel
+            # Khởi động PM2 (nếu chưa có thì start mới, có rồi thì restart)
+            pm2 restart noibaihotel || pm2 start npm --name "noibaihotel" -- start

@@ -1,0 +1,36 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main # Chạy luồng CI/CD khi có code push lên nhánh main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}       # IP của VPS (157.10.53.11)
+          username: ${{ secrets.VPS_USER }}   # Tên user (thường là root)
+          key: ${{ secrets.VPS_SSH_KEY }}     # Khối khóa bí mật (Private Key)
+          port: 22
+          script: |
+            # Di chuyển vào folder code (chú ý thay đổi tên cho đúng với folder trên VPS)
+            cd /root/noibaihotel
+            
+            # Lấy code mới nhất từ git
+            git pull origin main
+            
+            # Cài đặt thư viện mới (nếu có)
+            npm install
+            
+            # Build lại project Next.js
+            npm run build
+            
+            # Khởi động lại PM2 để cập nhật code mới không bị downtime
+            pm2 restart noibaihotel

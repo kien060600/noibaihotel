@@ -81,7 +81,7 @@ export default function RoomDetail() {
                       alt={`${roomName} ${idx + 1}`}
                       fill
                       sizes="(max-width: 767px) 100vw, (max-width: 992px) 50vw, 600px"
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'cover', transform: 'translateZ(0)', willChange: 'transform' }}
                       loading={idx === 0 ? 'eager' : 'lazy'}
                     />
                   </div>
@@ -164,7 +164,7 @@ export default function RoomDetail() {
         .content-layout { display: grid; grid-template-columns: 1fr; gap: var(--space-12); margin-top: var(--space-8); }
         @media (min-width: 992px) { .content-layout { grid-template-columns: 2fr 1fr; margin-top: var(--space-12); } }
         .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-12); }
-        .gallery-item { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-md); }
+        .gallery-item { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-md); transform: translateZ(0); backface-visibility: hidden; }
         @media (max-width: 767px) {
           .gallery { grid-template-columns: 1fr; }
         }

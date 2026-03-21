@@ -42,7 +42,12 @@ export default function RoomsPage() {
                       fill
                       sizes="(max-width: 767px) 100vw, (max-width: 1100px) 50vw, 400px"
                       className="room-img"
-                      style={{ objectFit: 'cover', transition: 'transform 0.5s cubic-bezier(0.4,0,0.2,1)' }}
+                      style={{ 
+                        objectFit: 'cover', 
+                        transition: 'transform 0.5s cubic-bezier(0.4,0,0.2,1)',
+                        transform: 'translateZ(0)',
+                        willChange: 'transform'
+                      }}
                     />
                     <div className="room-image-overlay">
                       <span className="overlay-text">{t.rooms.viewDetail}</span>
@@ -80,9 +85,9 @@ export default function RoomsPage() {
         .page-subtitle { font-size: var(--text-base); color: var(--color-gray-300); max-width: 600px; margin: 0 auto; }
         .rooms-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-8); }
         @media (min-width: 992px) { .rooms-grid { grid-template-columns: repeat(3, 1fr); } }
-        .room-card { background-color: var(--color-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: all var(--transition-normal); display: flex; flex-direction: column; }
-        .room-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-        .room-image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; display: block; cursor: pointer; }
+        .room-card { background-color: var(--color-white); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); transition: all var(--transition-normal); display: flex; flex-direction: column; transform: translateZ(0); backface-visibility: hidden; }
+        .room-card:hover { transform: translateY(-8px) translateZ(0); box-shadow: var(--shadow-lg); }
+        .room-image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; display: block; cursor: pointer; transform: translateZ(0); backface-visibility: hidden; }
         .room-card:hover .room-img { transform: scale(1.05); }
         .room-image-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0); display: flex; align-items: center; justify-content: center; transition: background var(--transition-normal); }
         .room-image:hover .room-image-overlay { background: rgba(0,0,0,0.35); }

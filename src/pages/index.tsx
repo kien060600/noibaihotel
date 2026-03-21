@@ -29,7 +29,7 @@ export default function HomePage() {
           fill
           priority
           sizes="100vw"
-          style={{ objectFit: 'cover', objectPosition: 'center 33%' }}
+          className="hero-bg-img"
         />
         <div className="hero-overlay"></div>
         <div className="hero-content">
@@ -91,7 +91,7 @@ export default function HomePage() {
                 alt={featuredName}
                 fill
                 sizes="(max-width: 767px) 100vw, 50vw"
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'cover', transform: 'translateZ(0)', willChange: 'transform' }}
               />
             </div>
             <div className="featured-info">
@@ -123,6 +123,20 @@ export default function HomePage() {
           align-items: flex-end;
           justify-content: center;
           overflow: hidden;
+        }
+
+        :global(.hero-bg-img) {
+          object-fit: cover;
+          object-position: center 33%;
+        }
+
+        @media (max-width: 767px) {
+          .hero {
+            min-height: 90dvh; /* Reduced height on mobile to crop less of the sides */
+          }
+          :global(.hero-bg-img) {
+            object-position: center center; /* Cắt ưu tiên trung tâm ảnh cho tỉ lệ dọc của điện thoại */
+          }
         }
 
         .hero-overlay {
@@ -244,6 +258,8 @@ export default function HomePage() {
           border-radius: var(--radius-lg);
           overflow: hidden;
           box-shadow: var(--shadow-md);
+          transform: translateZ(0);
+          backface-visibility: hidden;
         }
 
         @media (min-width: 768px) {
@@ -254,6 +270,8 @@ export default function HomePage() {
           position: relative;
           overflow: hidden;
           height: 280px;
+          transform: translateZ(0);
+          backface-visibility: hidden;
         }
 
         @media (min-width: 768px) {

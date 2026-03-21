@@ -5,6 +5,7 @@ const nextConfig = {
     i18n: {
         locales: ["vi", "en", "zh"],
         defaultLocale: "vi",
+        localeDetection: false,
     },
     images: {
         remotePatterns: [

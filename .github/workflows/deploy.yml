@@ -44,4 +44,4 @@ jobs:
             npm run build
             
             # Khởi động PM2 (nếu chưa có thì start mới, có rồi thì restart)
-            pm2 restart noibaihotel || pm2 start npm --name "noibaihotel" -- start
+            pm2 restart noibaihotel || pm2 start node --name "noibaihotel" -- .next/standalone/server.js

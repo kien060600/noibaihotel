@@ -88,6 +88,8 @@ export const dictionaries = {
             bookingSuccessTitle: "Đặt phòng thành công!",
             bookingSuccessDesc: "Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm để xác nhận.",
             bookAnother: "Đặt phòng khác",
+            bookingError: "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+            bookingLoading: "Đang gửi...",
         },
         services: {
             title: "Dịch Vụ Tiện Ích",
@@ -235,6 +237,8 @@ export const dictionaries = {
             bookingSuccessTitle: "Booking Submitted!",
             bookingSuccessDesc: "Thank you! We will contact you soon to confirm.",
             bookAnother: "Book Another Room",
+            bookingError: "An error occurred. Please try again later.",
+            bookingLoading: "Submitting...",
         },
         services: {
             title: "Top-Class Services & Amenities",
@@ -382,6 +386,8 @@ export const dictionaries = {
             bookingSuccessTitle: "预订成功！",
             bookingSuccessDesc: "感谢您！我们将尽快联系您确认。",
             bookAnother: "再次预订",
+            bookingError: "发生错误，请稍后再试。",
+            bookingLoading: "提交中...",
         },
         services: {
             title: "顶级便民服务",

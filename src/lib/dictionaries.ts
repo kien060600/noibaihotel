@@ -85,6 +85,9 @@ export const dictionaries = {
             quickInfo: "Thông Tin Nhanh",
             notFound: "Không tìm thấy phòng",
             backToRooms: "Quay lại danh sách phòng",
+            bookingSuccessTitle: "Đặt phòng thành công!",
+            bookingSuccessDesc: "Cảm ơn bạn! Chúng tôi sẽ liên hệ sớm để xác nhận.",
+            bookAnother: "Đặt phòng khác",
         },
         services: {
             title: "Dịch Vụ Tiện Ích",
@@ -229,6 +232,9 @@ export const dictionaries = {
             quickInfo: "Quick Info",
             notFound: "Room not found",
             backToRooms: "Back to rooms",
+            bookingSuccessTitle: "Booking Submitted!",
+            bookingSuccessDesc: "Thank you! We will contact you soon to confirm.",
+            bookAnother: "Book Another Room",
         },
         services: {
             title: "Top-Class Services & Amenities",
@@ -373,6 +379,9 @@ export const dictionaries = {
             quickInfo: "快速信息",
             notFound: "找不到房间",
             backToRooms: "返回客房列表",
+            bookingSuccessTitle: "预订成功！",
+            bookingSuccessDesc: "感谢您！我们将尽快联系您确认。",
+            bookAnother: "再次预订",
         },
         services: {
             title: "顶级便民服务",

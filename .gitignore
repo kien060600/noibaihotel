@@ -42,3 +42,5 @@ next-env.d.ts
 
 # original images folder (already copied to public/images)
 /Image
+
+/src/generated/prisma

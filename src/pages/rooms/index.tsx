@@ -35,27 +35,29 @@ export default function RoomsPage() {
 
               return (
                 <article key={room.id} className="room-card">
-                  <Link href={`/rooms/${room.slug}`} className="room-image">
-                    <Image
-                      src={room.image}
-                      alt={roomName}
-                      fill
-                      sizes="(max-width: 767px) 100vw, (max-width: 1100px) 50vw, 400px"
-                      className="room-img"
-                      style={{ 
-                        objectFit: 'cover', 
-                        transition: 'transform 0.5s cubic-bezier(0.4,0,0.2,1)',
-                        transform: 'translateZ(0)',
-                        willChange: 'transform'
-                      }}
-                    />
-                    <div className="room-image-overlay">
-                      <span className="overlay-text">{t.rooms.viewDetail}</span>
-                    </div>
-                    <div className="room-price-badge">
-                      <span>{t.rooms.from}</span>
-                      <strong>{formatPrice(room.price)}</strong> {t.rooms.perNight}
-                    </div>
+                  <Link href={`/rooms/${room.slug}`} passHref legacyBehavior>
+                    <a className="room-image">
+                      <Image
+                        src={room.image}
+                        alt={roomName}
+                        fill
+                        sizes="(max-width: 767px) 100vw, (max-width: 1100px) 50vw, 400px"
+                        className="room-img"
+                        style={{ 
+                          objectFit: 'cover', 
+                          transition: 'transform 0.5s cubic-bezier(0.4,0,0.2,1)',
+                          transform: 'translateZ(0)',
+                          willChange: 'transform'
+                        }}
+                      />
+                      <div className="room-image-overlay">
+                        <span className="overlay-text">{t.rooms.viewDetail}</span>
+                      </div>
+                      <div className="room-price-badge">
+                        <span>{t.rooms.from}</span>
+                        <strong>{formatPrice(room.price)}</strong> {t.rooms.perNight}
+                      </div>
+                    </a>
                   </Link>
 
                   <div className="room-info">

@@ -112,15 +112,17 @@ export default function HomePage() {
           </div>
 
           <div className="featured-room">
-            <div className="featured-img">
-              <Image
-                src={featuredRoom.images[0]}
-                alt={featuredName}
-                fill
-                sizes="(max-width: 767px) 100vw, 50vw"
-                style={{ objectFit: 'cover', transform: 'translateZ(0)', willChange: 'transform' }}
-              />
-            </div>
+            <Link href={`/rooms/${featuredRoom.slug}`} passHref legacyBehavior>
+              <a className="featured-img" style={{ display: 'block' }}>
+                <Image
+                  src={featuredRoom.images[0]}
+                  alt={featuredName}
+                  fill
+                  sizes="(max-width: 767px) 100vw, 50vw"
+                  style={{ objectFit: 'cover', transform: 'translateZ(0)', willChange: 'transform' }}
+                />
+              </a>
+            </Link>
             <div className="featured-info">
               <h3 className="featured-name">{featuredName}</h3>
               <p className="featured-desc">{featuredDesc}</p>

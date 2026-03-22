@@ -45,6 +45,10 @@ jobs:
             
             # Build Next.js
             npm run build
-            
+
+            # Copy static assets vào standalone (bắt buộc với output: standalone)
+            cp -r .next/static .next/standalone/.next/static
+            cp -r public .next/standalone/public
+
             # Khởi động PM2 (nếu chưa có thì start mới, có rồi thì restart)
             pm2 restart noibaihotel || pm2 start node --name "noibaihotel" -- .next/standalone/server.js
